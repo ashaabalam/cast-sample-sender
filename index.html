@@ -36,11 +36,18 @@
       assetKey: 'sN_IYUG8STe1ZzhIIE_ksA',
       adTagParameters: { key: 'value' },
     };
-    // /* VOD */
+    // /* VOD
     var streamRequest = {
-      contentSourceId: '19223',
-      videoId: 'googleio-highlights',
-      adTagParameters: { key: 'value' },
+      contentSourceId: '34343',
+      videoId: 'ima-test',
+      adTagParameters: { rdid: 'fake' },
+    };
+    // /* VOD auth asset */
+    var streamRequest = {
+      contentSourceId: '67484',
+      videoId: '182737',
+      adTagParameters: { rdid: 'fake' },
+      manifestURLSuffix: 'hdnea=st=1488312728~exp=1488316328~acl=/*~hmac=bdc229625e4ec3e6d04cfc9b61762adf6eb6ad07346cc4a2ff257c209cf1a53b',
     };
     // */
     var mediaInfo = new chrome.cast.media.MediaInfo('ignored', 'application/x-mpegurl');
@@ -57,3 +64,4 @@
 
 
 <button is="google-cast-button"></button>
+<button onclick="requestStream();">requestStream</button>
