@@ -1,13 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Sender Demo</title>
-<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-<script src="sender.js"></script>
-</head>
-<body>
-  <script type="text/javascript">
-    var sender = new Sender();
-  </script>
-</body>
-</html>
+<title>devrajm cast sample sender</title>
+<script type="text/javascript"
+        src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+<script type="text/javascript">
+
+
+  window['__onGCastApiAvailable'] = function(isAvailable) {
+    if (isAvailable) {
+      initializeCastApi();
+    }
+  };
+
+  initializeCastApi = function() {
+    cast.framework.CastContext.getInstance().setOptions({
+      receiverApplicationId: 'CA4E7BEE',
+      autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+    });
+
+    cast.framework.CastContext.getInstance().addEventListener(
+      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
+      function(event) {
+        console.log(event.sessionState);
+        if(event.sessionState == cast.framework.SessionState.SESSION_STARTED) {
+          requestStream();
+        }
+      }
+    );
+  };
+
+  requestStream = function() {
+    var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+
+    /* Live
+    var streamRequest = {
+      assetKey: 'sN_IYUG8STe1ZzhIIE_ksA',
+      adTagParameters: { key: 'value' },
+    };
+    // /* VOD */
+    var streamRequest = {
+      contentSourceId: '19223',
+      videoId: 'googleio-highlights',
+      adTagParameters: { key: 'value' },
+    };
+    // */
+    var mediaInfo = new chrome.cast.media.MediaInfo('ignored', 'application/x-mpegurl');
+    mediaInfo.customData = streamRequest;
+
+    var request = new chrome.cast.media.LoadRequest(mediaInfo);
+    castSession.loadMedia(request).then(
+      function() { console.log('Load succeed'); },
+      function(errorCode) { console.log('Error code: ' + errorCode); });
+  };
+
+
+</script>
+
+
+<button is="google-cast-button"></button>
