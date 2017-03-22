@@ -22,7 +22,7 @@
       function(event) {
         console.log(event.sessionState);
         if(event.sessionState == cast.framework.SessionState.SESSION_STARTED) {
-          requestStream();
+          // requestStream();
         }
       }
     );
@@ -44,10 +44,10 @@
     };
     // /* VOD auth asset */
     var streamRequest = {
-      contentSourceId: '67484',
-      videoId: '182737',
-      adTagParameters: { rdid: 'fake' },
-      manifestURLSuffix: 'hdnea=st=1488312728~exp=1488316328~acl=/*~hmac=bdc229625e4ec3e6d04cfc9b61762adf6eb6ad07346cc4a2ff257c209cf1a53b',
+      contentSourceId: '38783',
+      videoId: '40019487',
+      adTagParameters: { description_url: 'cnn.com' },
+      // manifestURLSuffix: 'hdnea=st=1488312728~exp=1488316328~acl=#<{(|~hmac=bdc229625e4ec3e6d04cfc9b61762adf6eb6ad07346cc4a2ff257c209cf1a53b',
     };
     // */
     var mediaInfo = new chrome.cast.media.MediaInfo('ignored', 'application/x-mpegurl');
