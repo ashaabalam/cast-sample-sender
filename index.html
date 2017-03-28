@@ -13,7 +13,8 @@
 
   initializeCastApi = function() {
     cast.framework.CastContext.getInstance().setOptions({
-      receiverApplicationId: 'CA4E7BEE',
+      // receiverApplicationId: 'CA4E7BEE', // prod sdk
+      receiverApplicationId: '7E833639', // dev sdk
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
     });
 
@@ -44,10 +45,10 @@
     };
     // /* VOD auth asset */
     var streamRequest = {
-      contentSourceId: '38783',
-      videoId: '40019487',
-      adTagParameters: { description_url: 'cnn.com' },
-      // manifestURLSuffix: 'hdnea=st=1488312728~exp=1488316328~acl=#<{(|~hmac=bdc229625e4ec3e6d04cfc9b61762adf6eb6ad07346cc4a2ff257c209cf1a53b',
+      contentSourceId: '3745',
+      videoId: '201079',
+      adTagParameters: { imafw_csid: 'aetn.aetv.amazonfire' },
+      manifestURLSuffix: 'hdnea=st=1490659679~exp=1490663279~acl=/*~hmac=aaf448bb4e177d01b63f1a08a5438eee36f25c74d4ac98b3e6f34aa9e23b20c8',
     };
     // */
     var mediaInfo = new chrome.cast.media.MediaInfo('ignored', 'application/x-mpegurl');
